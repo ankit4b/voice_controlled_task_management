@@ -22,8 +22,7 @@ export default function TodoList({ setIsVisible }) {
     console.log("Todos : ", todos);
   }, [todos]);
   return (
-    <div className="m-3 border-2 border-blue-100">
-      <h2 className="font-bold m-3 text-xl">Task List</h2>
+    <div>
       {/* <button
         onClick={playTodo}
         className="m-1 border-2 border-red-300 px-2 py-1 rounded-md"
@@ -31,7 +30,7 @@ export default function TodoList({ setIsVisible }) {
         Play
       </button> */}
       <hr />
-      <div className="flex justify-around flex-wrap gap-10 p-3">
+      <div className="flex justify-around flex-wrap p-3 h-[60vh] overflow-auto">
         {todos.map((todo) => {
           return (
             <TodoCard key={todo.id} todo={todo} setIsVisible={setIsVisible} />

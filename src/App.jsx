@@ -5,20 +5,24 @@ import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import About from "./pages/About";
 import { TodoProvider } from "./contexts/TodoContext";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <>
-      <TodoProvider>
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </BrowserRouter>
-      </TodoProvider>
+      <div className="h-screen">
+        <TodoProvider>
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+            <Footer />
+          </BrowserRouter>
+        </TodoProvider>
+      </div>
     </>
   );
 }

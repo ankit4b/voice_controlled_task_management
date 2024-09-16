@@ -3,6 +3,8 @@ import { TodoContext } from "../contexts/TodoContext";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { TiInputChecked } from "react-icons/ti";
 import { ImCheckboxUnchecked } from "react-icons/im";
+import { CiCircleCheck } from "react-icons/ci";
+import { FaCheckCircle } from "react-icons/fa";
 
 export default function TodoCard({ todo, setIsVisible }) {
   const { deleteTodo, updateTodo, setCurrentTodo } = useContext(TodoContext);
@@ -20,42 +22,41 @@ export default function TodoCard({ todo, setIsVisible }) {
   };
 
   return (
-    <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 h-fit min-h-40 border border-b-slate-400 bg-yellow-300 p-3 pb-4 flex flex-col gap-3  shadow-lg relative resize overflow-auto">
-      <h3 className="font-bold border-b border-b-yellow-50 pb-2 flex gap-2 items-center">
-        <span onClick={() => handelCompleted()}>
-          {todo.isCompleted ? (
-            <TiInputChecked size={20} width={20} height={20} />
-          ) : (
-            <ImCheckboxUnchecked size={15} width={15} height={15} />
-          )}
-        </span>
-        <span className={`${todo.isCompleted ? "line-through" : ""}`}>
-          {todo.title}
-        </span>
-      </h3>
+    <div className="w-full sm:w-full md:w-[45%] mb-4 h-fit min-h-40 border border-b-slate-400 bg-[#F0D1A8] p-3 pb-4 flex gap-3  shadow-lg relative resize overflow-auto rounded-lg">
+      <div className="flex-1">
+        <h3 className="text-[#2f201d] font-bold pb-2 flex gap-2 items-center capitalize">
+          <span className={`${todo.isCompleted ? "line-through" : ""}`}>
+            {todo.title}..
+          </span>
+        </h3>
 
-      <div>
-        <p style={{ whiteSpace: "pre-wrap" }}>{todo.description}</p>
+        <div className="h-[6rem] overflow-y-auto">
+          <p
+            style={{ whiteSpace: "pre-wrap" }}
+            className="text-sm text-[#614641]"
+          >
+            {todo.description}
+          </p>
+        </div>
       </div>
 
-      <div
-        className="absolute bottom-1 right-1 p-1 cursor-pointer"
-        onClick={() => deleteTodo(todo.id)}
-      >
-        <FaTrash size={15} width={15} height={15} />
+      <div className="flex flex-col justify-around items-center">
+        <div>
+          <span onClick={() => handelCompleted()}>
+            {todo.isCompleted ? (
+              <FaCheckCircle size={15} width={15} height={15} />
+            ) : (
+              <CiCircleCheck size={18} width={18} height={18} />
+            )}
+          </span>
+        </div>
+        <div className="" onClick={() => handelUpdateTodo(todo.id)}>
+          <FaEdit size={15} width={15} height={15} />
+        </div>
+        <div className="p-1 cursor-pointer" onClick={() => deleteTodo(todo.id)}>
+          <FaTrash size={15} width={15} height={15} />
+        </div>
       </div>
-      <div
-        className="absolute top-0 right-1 p-1 cursor-pointer"
-        onClick={() => handelUpdateTodo(todo.id)}
-      >
-        <FaEdit size={15} width={15} height={15} />
-      </div>
-      {/* <div
-        className="absolute bottom-0 left-0 p-1 cursor-pointer"
-        onClick={() => handelCompleted()}
-      >
-        {todo.isCompleted ? <TiInputChecked /> : <ImCheckboxUnchecked />}
-      </div> */}
     </div>
   );
 }
