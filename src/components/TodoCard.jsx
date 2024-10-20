@@ -22,15 +22,15 @@ export default function TodoCard({ todo, setIsVisible }) {
   };
 
   return (
-    <div className="w-full sm:w-full md:w-[45%] mb-4 h-fit min-h-40 border border-b-slate-400 bg-[#F0D1A8] p-3 pb-4 flex gap-3  shadow-lg relative resize overflow-auto rounded-lg">
+    <div className="w-full sm:w-full md:w-[45%] mb-4 h-fit min-h-40 border border-b-slate-400 bg-[#F0D1A8] p-3 flex gap-3  shadow-lg relative resize overflow-auto rounded-lg">
       <div className="flex-1">
         <h3 className="text-[#2f201d] font-bold pb-2 flex gap-2 items-center capitalize">
           <span className={`${todo.isCompleted ? "line-through" : ""}`}>
-            {todo.title}..
+            {todo.title}...
           </span>
         </h3>
 
-        <div className="h-[6rem] overflow-y-auto">
+        <div className="h-[5rem] overflow-y-auto">
           <p
             style={{ whiteSpace: "pre-wrap" }}
             className="text-sm text-[#614641]"
@@ -57,6 +57,14 @@ export default function TodoCard({ todo, setIsVisible }) {
           <FaTrash size={15} width={15} height={15} />
         </div>
       </div>
+
+      {todo.datetime ? (
+        <h3 className="font-bold text-xs absolute bottom-[2px] ">
+          {todo.datetime.split("T")[0]} {todo.datetime.split("T")[1]}
+        </h3>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

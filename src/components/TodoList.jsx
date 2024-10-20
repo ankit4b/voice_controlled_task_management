@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TodoCard from "./TodoCard";
 import { TodoContext } from "../contexts/TodoContext";
 
 export default function TodoList({ setIsVisible }) {
   const { todos } = useContext(TodoContext);
+  const [visibleCount, setVisibleCount] = useState(4);
   // let speech = new SpeechSynthesisUtterance();
 
   // const playTodo = () => {
@@ -18,6 +19,10 @@ export default function TodoList({ setIsVisible }) {
   //   window.speechSynthesis.speak(speech);
   // };
 
+  const handleShowMore = () => {
+    setVisibleCount((prevCount) => prevCount + 4);
+  };
+
   useEffect(() => {
     console.log("Todos : ", todos);
   }, [todos]);
@@ -29,13 +34,24 @@ export default function TodoList({ setIsVisible }) {
       >
         Play
       </button> */}
-      <hr />
-      <div className="flex justify-around flex-wrap p-3 h-[60vh] overflow-auto">
-        {todos.map((todo) => {
+      <div className="flex justify-around flex-wrap h-[60vh] overflow-auto">
+        {todos.slice(0, visibleCount).map((todo) => {
           return (
             <TodoCard key={todo.id} todo={todo} setIsVisible={setIsVisible} />
           );
         })}
+        {visibleCount <= todos.length ? (
+          <div className="w-full text-center">
+            <button
+              onClick={handleShowMore}
+              className="text-[#2f201d] font-bold border-4 border-[#F0D1A8] px-3 py-1 hover:bg-[#F0D1A8]"
+            >
+              Load more
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

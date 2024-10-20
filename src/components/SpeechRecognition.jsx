@@ -4,6 +4,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { TodoContext } from "../contexts/TodoContext";
+import { FaMicrophoneAlt, FaMicrophoneAltSlash } from "react-icons/fa";
 
 const SpeechRecognitionComponent = () => {
   let speech = new SpeechSynthesisUtterance();
@@ -131,27 +132,30 @@ const SpeechRecognitionComponent = () => {
   }, [transcript, resetTranscript]);
 
   return (
-    <div>
-      <p>Microphone: {listening ? "on" : "off"}</p>
-      <button
-        onClick={SpeechRecognition.startListening}
-        className="border-2 border-green-200 bg-green-900 text-white p-2 rounded-md"
-      >
-        Start
-      </button>
-      <button
-        onClick={() => SpeechRecognition.stopListening()}
-        className="border-2 border-red-200 bg-red-900 text-white p-2 rounded-md"
-      >
-        Stop
-      </button>
-      <button
+    <div className="flex">
+      {listening ? (
+        <button
+          onClick={SpeechRecognition.stopListening}
+          className="text-[#4b332f]"
+        >
+          <FaMicrophoneAlt size={"1.5rem"} />
+        </button>
+      ) : (
+        <button
+          onClick={SpeechRecognition.startListening}
+          className="text-[#4b332f]"
+        >
+          <FaMicrophoneAltSlash size={"1.5rem"} />
+        </button>
+      )}
+      <p className="text-[#4b332f]">{listening ? "on" : "off"}</p>
+      {/* <button
         onClick={resetTranscript}
         className="border-2 border-yellow-200 bg-yellow-900 text-white p-2 rounded-md"
       >
         Reset
       </button>
-      <p>TR: {transcript}</p>
+      <p>TR: {transcript}</p> */}
     </div>
   );
 };

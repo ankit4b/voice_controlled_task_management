@@ -2,6 +2,8 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import { useContext, useEffect, useState } from "react";
+import { TodoContext } from "../contexts/TodoContext";
 
 const weekday = [
   "Sunday",
@@ -12,11 +14,24 @@ const weekday = [
   "Friday",
   "Saturday",
 ];
-const events = [{ title: "Meeting1", start: new Date() }];
+// const events = [{ title: "Meeting1", start: new Date() }];
 
 export default function Calendar() {
+  const { todos } = useContext(TodoContext);
+  const [events, setEvents] = useState([]);
   const d = new Date();
   let day = d.getDay();
+
+  useEffect(() => {
+    const event_list = [];
+    todos.forEach((todo) => {
+      if (todo.datetime) {
+        event_list.push({ title: todo.title, start: todo.datetime });
+      }
+    });
+    setEvents(event_list);
+    console.log("event_list : ", event_list);
+  }, [todos]);
 
   return (
     <>

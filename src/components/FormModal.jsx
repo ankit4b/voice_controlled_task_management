@@ -79,6 +79,26 @@ export default function FormModal({ isVisible, setIsVisible }) {
                   }
                 ></textarea>
               </div>
+
+              {/* Date-Time  */}
+              <div className="mb-5">
+                <label
+                  htmlFor="datetime"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Date
+                </label>
+                <input
+                  type="datetime-local"
+                  id="datetime"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  value={currentTodo.datetime}
+                  onChange={(e) =>
+                    setCurrentTodo({ ...currentTodo, datetime: e.target.value })
+                  }
+                />
+              </div>
+
               <div className="flex justify-center">
                 <button
                   onClick={isNew ? handelSubmit : handelUpdate}
