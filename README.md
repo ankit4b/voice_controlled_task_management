@@ -1,10 +1,6 @@
-# React + Vite
+# Voice-Controlled Task Manager
 
 url: [https://github.com/ankit4b/voice_controlled_task_management](https://voice-controlled-task-management.vercel.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A task management application with voice control functionality and calendar integration, built using the React Context API, FullCalendar, React Speech Recognition, and Appwrite for user data storage and authentication.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
