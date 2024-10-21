@@ -1,6 +1,6 @@
 # React + Vite
 
-url: https://github.com/ankit4b/voice_controlled_task_management
+url: [https://github.com/ankit4b/voice_controlled_task_management](https://voice-controlled-task-management.vercel.app/)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
