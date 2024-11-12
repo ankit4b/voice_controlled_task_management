@@ -9,14 +9,14 @@ export default function Header() {
   const navigate = useNavigate();
   return (
     <>
-      <nav className="bg-[#f2eaea] px-10 py-2 flex justify-between items-center shadow-xl mb-6 sticky top-0">
+      <nav className="bg-[#f2eaea] px-10 py-2 flex justify-between items-center shadow-xl mb-6 sticky top-0 z-10">
         <NavLink to="/">
           <h1 className="font-island font-normal text-5xl text-black cursor-pointer text-center sm:text-center">
             Task Vox
             {/* Voice Controlled Task Management */}
           </h1>
         </NavLink>
-        <ul className="gap-5 items-center text-black text-lg hidden sm:hidden md:flex lg:flex xl:flex">
+        <ul className="gap-5 items-center text-black text-lg flex">
           {/* <li className="cursor-pointer">
             <NavLink
               to="/"
